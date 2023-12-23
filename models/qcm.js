@@ -1,5 +1,4 @@
 class Qcm {
-
     #id;
     #name;
     #theme;
@@ -26,7 +25,7 @@ class Qcm {
 
     set name(value) {
         this.#name = value;
-    } 
+    }
 
     get theme() {
         return this.#theme;
@@ -40,13 +39,21 @@ class Qcm {
         return this.#nbpoints;
     }
 
-    get listquestions(){
+    get listquestions() {
         return this.#listquestions;
     }
 
-    toJSON(key) {
-        console.log(key);
-        return {id: this.#id, name: this.#name};
+    //obligé de passer par ça car ça marche pas autrement
+    addPoints(points) {
+        if (typeof points === 'number' && !isNaN(points)) {
+            this.#nbpoints += points;
+        } else {
+            console.error('Marche pas car pas valide');
+        }
+    }
+
+    toString() { // similaire à __str__
+        return `Qcm { id: ${this.#id}, name: ${this.#name}, theme: ${this.#theme}, author: ${this.#author}, nbpoints: ${this.#nbpoints}, listquestions: ${JSON.stringify(this.#listquestions)} }`;
     }
 }
 

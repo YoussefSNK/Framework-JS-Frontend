@@ -1,10 +1,10 @@
 class Questions {
-
     #id;
     #question;
     #reponse;
     #theme;
     #nbpoints;
+
 
     constructor(questionToCreate) {
         this.#id = questionToCreate.id;

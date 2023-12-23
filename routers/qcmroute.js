@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-
-const {displayQcms, displayFormQcm, createNewForm, displayQcmJson, displayQcmDetailed} = require('../controllers/qcms');
-
+const {showAddQuestionForm, processAddQuestionForm, displayQcms, displayFormQcm, createNewForm, displayQcmJson, displayQcmDetailed} = require('../controllers/qcms');
 
 // DEFINITION DES ROUTES
 
@@ -23,12 +21,11 @@ router.get('/:qcmid', displayQcmDetailed)
 // qui affiche le qcm ayant pour id 2
 // req.params.qcmi
 
-
-
+// on espère ça marche
+router.get('/:qcmid/newquestion', showAddQuestionForm);
+router.post('/:qcmid/newquestion', processAddQuestionForm);
 
 
 
 //FIN DES ROUTES
-
-
 module.exports = router;
